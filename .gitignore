@@ -11,7 +11,7 @@ target/
 *.iws
 *.iml
 *.ipr
-test/java/secret/
+src/test/java/secret/
 
 ### Eclipse ###
 .apt_generated
