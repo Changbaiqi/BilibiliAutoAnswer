@@ -1,13 +1,10 @@
 package com.cbq.bilibili.answer;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cbq.bilibili.answer.utils.*;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 public class Main {
@@ -22,7 +19,7 @@ public class Main {
                     .addMessage(new ChatGLMMessage("user", "接下来你只需要回复对应题正确答案的选项ans_hash值无需回复任何其他内容和解释,如果有多个答案正确也只需要回答一个ans_hash即可。"))
                     .addMessage(new ChatGLMMessage("user", problem)).build();
             //这边建议是使用通义千问，通义千问的正确率要比其他几个分数高得多的多
-            String chatMessage = TongYiUtil.getChatMessage("AI的APIKey", build);
+            String chatMessage = TongYiUtils.getChatMessage("AI的APIKey", build);
             System.out.println("题目原始数据："+jsonObject.toJSONString());
             System.out.println("AI答案文字："+getAnsText(jsonObject,chatMessage.substring(0,32)));
             System.out.println("AI答案Hash：" + chatMessage.substring(0,32));

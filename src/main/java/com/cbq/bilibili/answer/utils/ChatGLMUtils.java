@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0
  */
 @Slf4j
-public class ChatGLMUtil {
+public class ChatGLMUtils {
     private static final String API_KEY = "";
 
     private static final String API_SECRET = "";
@@ -39,7 +39,7 @@ public class ChatGLMUtil {
      * @return
      */
     public static String getChatMessage(String API_KEY, String API_SECRET,String message) {
-        ChatGLMUtil.client.setConfig(new ClientV4.Builder(API_KEY, API_SECRET).build().getConfig());
+        ChatGLMUtils.client.setConfig(new ClientV4.Builder(API_KEY, API_SECRET).build().getConfig());
         // 请自定义自己的业务id
         List<ChatMessage> messages = new ArrayList<>();
         ChatMessage chatMessage = new ChatMessage(ChatMessageRole.USER.value(), message);

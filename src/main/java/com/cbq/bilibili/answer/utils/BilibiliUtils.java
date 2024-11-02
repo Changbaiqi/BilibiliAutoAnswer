@@ -3,13 +3,18 @@ package com.cbq.bilibili.answer.utils;
 import okhttp3.*;
 
 import java.io.IOException;
-
+/**
+ * @author ChangBaiQi
+ * @description TODO 核心部分，用于调用B站获取当前题目和答复题目等
+ * @date 2024/11/2 12:04
+ * @version 1.0
+ */
 public class BilibiliUtils {
-
 
     /**
      * 获取下一题
-     * @return
+     * @param access_key App对应的 access_key
+     * @return 返回题目的json数据
      */
     public static String getProblem(String access_key){
         OkHttpClient client = new OkHttpClient().newBuilder()
@@ -33,8 +38,12 @@ public class BilibiliUtils {
     }
 
     /**
-     * 提交答案
-     * @param ans_hash
+     * 提交答案接口
+     * @param acess_key 这个是APP端对应的access_key参数
+     * @param problemID 对应答复题目的ID
+     * @param ans_hash 对应回复答案的ans_hash值
+     * @param ans_text 对应回复答案的文本，注意这里文本要用url编码之后填写
+     * @return 返回结果json数据字符串
      */
     public static String submitAnswer(String acess_key,String problemID,String ans_hash,String ans_text){
         OkHttpClient client = new OkHttpClient().newBuilder()

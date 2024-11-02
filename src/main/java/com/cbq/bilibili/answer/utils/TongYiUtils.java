@@ -10,8 +10,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author ChangBaiQi
+ * @description TODO 通义千问大模型AI工具类
+ * @date 2024/11/2 12:04
+ * @version 1.0
+ */
 @Slf4j
-public class XHUtil {
+public class TongYiUtils {
 
     public static synchronized String getChatMessage(String apiKey,ChatGLMChat chatGLMChat){
         OkHttpClient client = new OkHttpClient.Builder()
@@ -19,7 +25,7 @@ public class XHUtil {
                 .readTimeout(30, TimeUnit.SECONDS)//设置读取超时时间
                 .build();
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-        String url = "https://spark-api-open.xf-yun.com/v1/chat/completions";
+        String url = "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions";
         ObjectMapper objectMapper = new ObjectMapper();
         String messages ="[]";
         try {
@@ -27,7 +33,7 @@ public class XHUtil {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-        String json = "{\"model\": \"generalv3.5\",\"messages\": "+messages+"}";
+        String json = "{\"model\": \"qwen-plus\",\"messages\": "+messages+"}";
 
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
